@@ -1,0 +1,69 @@
+/*
+  Time O(n)
+  Space O(n)
+  leetcode yes
+  problem no
+  
+  We first insert all unique elements in hashmap. Then we check for each element in hashmap that whether
+  (element-target) or (element+target)  is present in Hashmap or not .if it is present add it to the result and remove both of these
+  elements from map to avoid duplicate pairs.
+
+
+*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class IsoMorphic {
+    public static void main (String[] args) {
+
+        int[] nums={3, 1, 4, 1, 5};
+        int target=2;
+        Map<Integer,Integer> map = new HashMap<>();
+        List<List<Integer>> result = new ArrayList<>();
+
+
+        for(int i=0;i<nums.length;i++)
+        {
+            if(!map.containsKey(nums[i]))
+                map.put(nums[i],0);
+        }
+
+        for(int i=0;i<nums.length;i++)
+        {
+            if(map.containsKey(nums[i]-target))
+            {
+                int number = nums[i]-target;
+                addToResult(number,nums[i],map,result);
+
+            }
+
+            if(map.containsKey(nums[i]+target))
+            {
+                int number = nums[i]+target;
+                addToResult(number,nums[i],map,result);
+
+            }
+
+
+        }
+
+        System.out.println(result);
+
+
+
+    }
+
+
+    public static void addToResult(int number,int nums, Map<Integer,Integer> map, List<List<Integer>> result)
+    {
+        List<Integer> l = new ArrayList<>();
+        map.remove(nums);
+        map.remove(number);
+        l.add(nums);
+        l.add(number);
+        result.add(l);
+
+    }
+}
