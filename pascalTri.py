@@ -3,6 +3,9 @@ The approach here is to first initialize the first two rows of the triangle matr
 now iterate till the given input value of numRows. and for every iteration add a 1 in the beginning and
 the end. and for the middle elements calculate the sum using the formula mentioned in the code. just adding
 the j and j+1 values.
+Leetcode running
+Time complexity - O(N)
+
 """
 
 def generate(self, numRows):
