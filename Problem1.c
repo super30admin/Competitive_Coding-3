@@ -17,7 +17,7 @@ Output:
 
 
  *
- * Time Complexity : O(n * (n+1) / 2) = O(n)
+ * Time Complexity : O(n * (n+1) / 2) = O(n^2)
  * Space Complexity : O(1) excluding the data needed by APIs
  */
 
