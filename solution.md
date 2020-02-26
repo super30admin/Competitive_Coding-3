@@ -3,11 +3,11 @@
 O(n)
 
 ## Space Complexity :
-Solution 1: O(1)
+Solution 1: O(1)\
 Solution 2: O(n)
 
 ## Did this code successfully run on Leetcode :
-Solution 1: Yes
+Solution 1: Yes\
 Solution 2: No. 36/72 test cases passed.
 
 ## Any problem you faced while coding this :
