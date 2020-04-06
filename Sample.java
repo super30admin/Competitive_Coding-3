@@ -47,3 +47,53 @@ class Solution {
         return ans;
     }
 }
+
+
+
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Got confused with the case where the k==0
+
+
+// Your code here along with comments explaining your approach
+
+
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+     int ans = 0;
+     if(k<0)
+         return ans;
+        //Create hashset, one to keep straight entry and other to reverse entry
+        Set<Integer> set1 = new HashSet<Integer> ();
+        Set<Integer> set2 = new HashSet<Integer> ();
+        //For the special case of k=0
+        if(k==0){
+                for(int i=0;i<nums.length;i++){
+                    //we will check does this element already exists in hashset
+                    if(!set1.contains(nums[i])){
+                            set1.add(nums[i]);
+                        }
+                    else{
+                        //if contains then we will remove that elemnt from first set
+                            set1.remove(nums[i]);
+                            if(!set2.contains(nums[i]))
+                                ans++;
+                            set2.add(nums[i]);
+                        }
+                }
+        }
+        else{
+            for(int i=0;i<nums.length;i++){
+                //Here set will take care of duplicate element on its own
+                set1.add(nums[i]);
+                set2.add(nums[i]+k);
+            }
+            //Now this well check for the complement exists or not
+            set1.retainAll(set2);
+            ans = set1.size();
+        }
+        return ans;
+    }
+}
