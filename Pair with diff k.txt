@@ -1,0 +1,73 @@
+#TC:O(N)
+#SC:O(N)
+
+class Pair
+{
+ int x;
+ int y; 
+    
+    
+ @Override
+  public int hashCode() { return x; }
+    
+@Override
+    public boolean equals(Object obj)
+    {
+        Pair other = (Pair) obj;
+        if (x == other.x && y==other.y)
+            return true;
+        return false;
+    }
+
+ Pair(int x,int y)
+ {
+    this.x=x;
+    this.y=y;
+ }
+}
+
+
+class Solution {
+    public int findPairs(int[] nums, int k) 
+    {
+      HashSet<Pair> set = new HashSet<>();
+      HashSet<Integer> map = new HashSet<>();
+        
+     if(k<0) return 0;
+      for(int i=0;i<nums.length;i++)
+      {   
+          int sum1=k+nums[i];
+          int sum2=nums[i]-k;
+          if(map.contains(sum1))
+          {
+              if((nums[i]<=(sum1)))
+                  set.add(new Pair(nums[i],sum1));
+              
+              else
+                  set.add(new Pair(sum1,nums[i]));
+               
+          }
+          
+         if(map.contains(sum2))
+          {
+              if((nums[i]<=(sum2)))
+                  set.add(new Pair(nums[i],sum2));
+              
+              else
+                  set.add(new Pair(sum2,nums[i]) );
+               
+          }
+    
+              map.add(nums[i]);
+      }
+      
+        
+        
+   //for(Pair m : set)
+   //  System.out.println(m.x+" "+m.y) ; 
+        
+        
+       return set.size(); 
+        
+    }
+}
