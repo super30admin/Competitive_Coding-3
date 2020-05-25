@@ -35,3 +35,35 @@ public int findPairs(int[] nums, int k) {
     }
 
 -----------------------------------------------------------------------------------
+// Time Complexity : O(n!);
+// Space Complexity : O(n!); 
+// Did this code successfully run on Leetcode : Yes
+
+public class PascalsTriangle {
+	public List<List<Integer>> generate(int numRows) {
+        
+    	List<List<Integer>> result = new ArrayList<>();
+        
+        //edge
+        if(numRows == 0)
+            return result;
+            
+        for(int i = 0; i <= numRows-1; i++) {
+			List<Integer> rowArray = new ArrayList<>();
+            for(int j = 0; j <= i; j++) {
+				
+				
+				if(j == 0 || j == i)
+                    rowArray.add(1);
+                else {
+					
+                    int left = result.get(i-1).get(j-1);
+                    int right = result.get(i-1).get(j);
+                    rowArray.add(left + right);
+                }    
+            }
+            result.add(rowArray);
+        }
+        return result;
+	}
+}
