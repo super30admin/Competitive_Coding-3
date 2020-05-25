@@ -39,8 +39,8 @@ class Solution {
     }
 }
 
-//time o(n pow 2)
-//space o(n pow 2)
+//time o(n pow 2) because we are running for each row and for all rows.
+//space o(n pow 2) because we are returning arraylist containing lists
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<>();
