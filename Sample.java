@@ -113,3 +113,32 @@ class Solution {
         return count;
     }
 }
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+         Arrays.sort(nums);
+        
+         int i = 0;
+         int j = 0;
+         int n = nums.length;
+         int count = 0;
+        while(i<n && j<n)
+        {
+            if(nums[j] - nums[i] < k || i == j)
+                j++;
+            else if(nums[j] - nums[i] > k)
+                i++;
+            else if (nums[j] - nums[i] == k)
+            {
+               count++;
+                i++;
+                j++;
+                while(j<n && nums[j] == nums[j-1])
+                    j++;
+                
+            }
+            
+        }
+        return count;
+    }
+}
