@@ -1,0 +1,26 @@
+Time complexity - o(n)
+space complexity - constant space
+
+public class Solution{
+
+    public  int[] pascalTriangleRow(int k){
+           int[] result = new int[k+1];
+           for(int i=0;i<=k;i++){
+               result[i]=combinationVal(k, i);
+           }
+           return result;
+       }
+       
+       public  int combinationVal(int n, int k){
+           if(k==0  || k==n) return 1;
+           int nfact=1;
+           int kfact=1;
+           int nkdifffact =1;
+           for(int i=1;i<=n;i++){
+               nfact*=i;
+               if(i==k) kfact=nfact;
+               if(i==n-k) nkdifffact=nfact;
+           }
+           return (nfact/kfact)/nkdifffact;
+       }
+       }
