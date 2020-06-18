@@ -23,6 +23,7 @@ class Solution:
     #                 low += 1 
     #     return count
     
+    #Time = O(n) time | O(n) space, for extra HashMap.
     def findPairs(self,nums,k):
         if not nums:
             return 0 
