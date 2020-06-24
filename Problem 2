@@ -1,0 +1,33 @@
+
+//Time Complexity : O(nlogn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+class Solution {
+public:
+    int numRescueBoats(vector<int>& people, int limit) {
+        int i=0;
+        int j=people.size()-1;
+        int count =0;
+        sort(people.begin(), people.end());
+        while(i<=j){
+            if(i==j){
+                count++;
+                break;
+            }
+           int sum = people[i]+people[j];
+            if(sum<=limit){
+                count++;
+                i++;
+                j--;
+            }
+            else{
+                j--;
+                count++;
+            }
+        }
+        
+        return count;
+    }
+};
