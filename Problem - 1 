@@ -1,0 +1,44 @@
+//Time Complexity : O(n) - where n is the number of elements given in the nuns array.
+//Space Complexity : O(n)
+//Runs on Leet Code
+//Approach; Add elements to the HashMap with their occurrences for faster retrieval. Handle the special case where the target is zero. Other thank that, look for the complement and if it is present increase the pairs and decrease the occurrence in the hash map once, we form a pair.
+class Solution {
+    int pairs;
+    public int findPairs(int[] nums, int k) {
+        if(k<0) return 0;
+        if(nums==null || nums.length ==0) return 0;
+        Map<Integer,Integer> hmap=new HashMap<Integer,Integer>();
+        for(int i=0;i<nums.length;i++){
+            if(!hmap.containsKey(nums[i])){
+                hmap.put(nums[i],1);
+            }
+            else{
+                int c=hmap.get(nums[i]);
+                c=c+1;
+                hmap.put(nums[i],c);
+            }
+        }
+        pairs=0;
+        if(k==0){
+            int p=0;
+            for(Integer each : hmap.keySet()){
+                int c=hmap.get(each); 
+                 if(c>=2) pairs++;
+                  
+        }
+            return pairs;
+    }
+        else{
+            for(Integer each : hmap.keySet()){
+            int c= each.intValue();
+                c=c-k;
+            if(hmap.containsKey(c)){
+                pairs++;
+            }
+        }
+             return pairs;
+        }
+        
+       
+}
+}
