@@ -1,4 +1,4 @@
-#TC: O(n), n: length of nums
+#TC: O(n log(n)), n: length of nums
 #SC: O(1)
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
