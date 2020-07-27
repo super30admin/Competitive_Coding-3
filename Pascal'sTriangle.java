@@ -1,5 +1,5 @@
 //TC: O(n^2), n: number of rows
-//SC:O(1)
+//SC: O(1)
 
 class Solution {
     public List<List<Integer>> generate(int numRows) {
