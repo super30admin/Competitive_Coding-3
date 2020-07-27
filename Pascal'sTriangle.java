@@ -1,3 +1,6 @@
+//TC: O(n^2), n: number of rows
+//SC:O(1)
+
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
