@@ -6,7 +6,7 @@
 import java.util.*;
 
 public class Kdiff_Pairs {
-	public int findPairs(int[] nums, int k) {
+	public static int findPairs(int[] nums, int k) {
 		if(nums == null || nums.length == 0)
 			return 0;
 		if (k < 0)
@@ -27,7 +27,9 @@ public class Kdiff_Pairs {
 		return result.size();   
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] nums= {3, 1, 4, 1, 5};
+		int k = 2;
+		System.out.println(findPairs(nums, k));
 
 	}
 }
