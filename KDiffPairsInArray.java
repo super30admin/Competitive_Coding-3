@@ -1,3 +1,5 @@
+//TC: O(n), n: length of nums[]
+//SC: O(n)
 class Solution {
     public int findPairs(int[] nums, int k) {
         if(k<0) return 0;
