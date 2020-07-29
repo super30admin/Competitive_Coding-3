@@ -1,6 +1,6 @@
 # APPROACH 1: BRUTE FORCE
 # Time Complexity : O(n^2), n: len(nums)
-# Space Complexity : O(1)
+# Space Complexity : O(r), r: len(result)
 # Did this code successfully run on Leetcode : No (TIME LIMIT EXCEEDED)
 # Any problem you faced while coding this : None
 #
@@ -35,7 +35,7 @@ class Solution:
 
 # APPROACH 2: Intermediate Solution
 # Time Complexity : O(n lg n), n: len(nums) -> because of sorting
-# Space Complexity : O(n) - space taken up by sorting
+# Space Complexity : O(1) 
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : None
 #
