@@ -9,25 +9,20 @@ class Solution:
 
         triangle = []
 
-
         for i in range(numRows):
 
-            #we will intialize each row as i + 1 length
+            # we will intialize each row as i + 1 length
             rows = [None for j in range(i + 1)]
 
-            #we make the first and last element 1
+            # we make the first and last element 1
             rows[0] = rows[-1] = 1
 
-            #we will iterate throught elements betweeen first and last
+            # we will iterate throught elements betweeen first and last
             for k in range(1, len(rows) - 1):
-                #we will add previos row, exactt position element value + previous row previous positoin element value
+                # we will add previos row, exactt position element value + previous row previous positoin element value
                 rows[k] = triangle[i - 1][k - 1] + triangle[i - 1][k]
 
-            #we append each row to the main triangle
+            # we append each row to the main triangle
             triangle.append(rows)
 
         return triangle
-
-
-
-
