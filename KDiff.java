@@ -1,6 +1,7 @@
 /*
 https://leetcode.com/problems/k-diff-pairs-in-an-array/
 532. K-diff Pairs in an Array
+Did this code successfully run on Leetcode :: Yes
 */
 
 import java.util.HashMap;
