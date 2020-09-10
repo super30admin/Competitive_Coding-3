@@ -1,3 +1,6 @@
+
+//T: O(N^2)
+//S: O(N^2)
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {

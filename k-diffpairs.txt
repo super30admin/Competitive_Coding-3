@@ -1,3 +1,6 @@
+//T: O(N)
+//S: O(N)
+
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
