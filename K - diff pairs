@@ -1,0 +1,41 @@
+// Time Complexity : O(N)
+// Space Complexity : O(N) -> N is unique elements in HashMap
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : Had to take some hints for structure of HashMap and edge cae for 0 was not intuitive.
+
+// Your code here along with comments explaining your approach: Idea is to create HashMAp with it's frequency as value.
+//Special Edge Case for k / diff == 0
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if(nums==null || nums.length == 0){
+            return 0;
+        }
+        
+        int count = 0;
+        HashMap<Integer,Integer> hmap = new HashMap<>();
+        
+        for(int i = 0 ; i < nums.length ; i++){       
+                hmap.put(nums[i],hmap.getOrDefault(nums[i],0) + 1);
+        }
+
+        for(int i : hmap.keySet()){
+            int currVal = i + k;
+            if(k==0){
+                if(hmap.get(i)>1){
+                    // hmap.put(i, hmap.get(currVal));
+                    // System.out.println(hmap.get(i));
+                    count++;
+                } 
+            }else{
+                if(hmap.containsKey(currVal)){
+                    if(hmap.get(currVal)>0){
+                        hmap.put(i, hmap.get(currVal));
+                        count++;
+                    }
+                } 
+            }
+        }
+        return count;
+    }
+}
