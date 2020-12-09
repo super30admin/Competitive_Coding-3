@@ -1,0 +1,30 @@
+// Time Complexity : O(n^2)
+// Space Complexity : O(n^2) ??
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Not intuitive approach, Had to look up for hints
+
+
+// Your code here along with comments explaining your approach: Idea is to create new ArrayList at each incremented size and fill it's element from previous list.
+//Add tempList to the final list and now increment size - > CAn we use tempArray instead of list ??
+
+SOLUTION:
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        int index = 0;
+        for(int i = 0 ; i < numRows; i++){
+            List<Integer> tempList = new ArrayList<>();
+            for(int j = 0 ; j < i + 1 ; j++){
+                // System.out.println(" i: " + i + " j " + j);
+                if(j==i || j==0 ){
+                    tempList.add(1);
+                }else{
+                    tempList.add(result.get(i-1).get(j-1) + result.get(i-1).get(j)); 
+                }
+            }
+                result.add(tempList);
+        }
+        return result;
+    }
+}
