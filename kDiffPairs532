@@ -1,0 +1,41 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+		//532. K-diff Pairs in an Array
+        //Time Complexity : O(nlogn)
+        //Space Complexity : O(1)
+        Arrays.sort(nums);
+        if(nums.length==0 || nums==null)
+            return 0;
+        
+        int slow =0;
+        int fast=0;
+        int count =0;
+        
+        while(fast < nums.length){
+            int diff = nums[fast]-nums[slow];
+            
+          if(slow==fast || diff < k)
+                   fast++;
+            
+            
+            else if(diff > k)
+                slow++;
+                
+            
+           else 
+            {
+                count++;
+                slow++;
+                fast++;
+                while(fast<nums.length && nums[fast] == nums[fast-1])
+                    fast++; 
+                
+            }
+               
+     
+                 
+        }
+     
+        return count;
+    }
+}
