@@ -1,3 +1,8 @@
+// Time Complexity : O(n) where n is number of elements in Array.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
 class Solution {
     public int findPairs(int[] nums, int k) {
         Arrays.sort(nums);
