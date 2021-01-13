@@ -3,7 +3,7 @@
         O(n*log(n)) (where n = length of the given array)
 
     Space Complexity:
-        O(n) (because of merge sort)
+        O(1)
 
     Did this code successfully run on LeetCode?:
         Yes
