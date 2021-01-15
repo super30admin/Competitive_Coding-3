@@ -1,6 +1,7 @@
 # TC = O(n2)
 # SC = O(n2)
 # DP solution would be to store values computed at each row. As present row elements(2) determine elements of next row except the 1's at each end. 
+
 class Solution:
     def generate(self, numRows):
         dp = []
@@ -14,5 +15,4 @@ class Solution:
             dp.append(row)
         # pascal triangle formed
         return dp
-    
     
