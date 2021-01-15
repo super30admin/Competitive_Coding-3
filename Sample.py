@@ -41,6 +41,9 @@ class Solution:
         - First Pass: Create a dictionary with frequencies of each element as value and element as key
         - Second Pass: Count if any "key + target" is present in keys from the dictionary
         - Edge case: for k == 0; create a separate pass
+        
+        Time Complexicity: O(n) # 2 passes with O(2n)
+        Space complexicity: O(n) # for dictionary
         """
         
         if len(nums) == 0: return 0
