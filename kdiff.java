@@ -1,57 +1,33 @@
-//Time Compexity: O(n)
-//Space Compexity: O(n)
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes 
+// Any problem you faced while coding this : no
 
-//Approach:
-//Main idea was to maintain a HashSet of possible [nums[i], nums[i+k]] list pair, which exist
-//return size of HashSet as result, since set would maintain unique pairs, we sort num pair before putting in HashSet
+// Your code here along with comments explaining your approach
+// use hashmap to lookup if n+k exists in map, if yes add to result
+// for the case of k=0 keep count of vals, add if count>1  
 
-//For the case of k==0, we handle it differently, maintain a HashMap with nums[i] with its count
-//which soever have count>1, count as valid pair 
-
-class Solution {
+public class Solution {
     public int findPairs(int[] nums, int k) {
-        HashMap<Integer, Integer> values = new HashMap<Integer, Integer>();
-        HashSet<List<Integer>> result = new HashSet<List<Integer>>();
+        if(nums==null || nums.length==0)
+            return 0;
         
-        for(int i=0; i<nums.length; i++){
-            if(!values.containsKey(nums[i])){
-                values.put(nums[i], 1);
-            }
-            else{
-                values.put(nums[i], values.get(nums[i])+1);
+        int result = 0;
+
+        HashMap <Integer,Integer> counter = new HashMap<>();
+        for (int n: nums) {
+            counter.put(n, counter.getOrDefault(n, 0)+1);
+        }
+
+        for (Map.Entry <Integer, Integer> entry: counter.entrySet()) {
+            int x = entry.getKey();
+            int val = entry.getValue();
+            if (k > 0 && counter.containsKey(x + k)) {
+                result++;
+            } else if (k == 0 && val > 1) {
+                result++;
             }
         }
-        
-        if(k==0){
-            int count = 0;
-            for(int n : values.keySet()){
-                if(values.get(n)>1){
-                    count++;
-                }
-            }
-            return count;
-        }
-        
-        for(int i=0; i<nums.length; i++){
-            if(values.containsKey(nums[i]-k)){
-                List<Integer> pair = Arrays.asList(nums[i], nums[i]-k);
-                Collections.sort(pair);
-                
-                if(!result.contains(pair)){   
-                    result.add(pair);    
-                }
-            }
-            
-            if(values.containsKey(nums[i]+k)){
-                List<Integer> pair2 = Arrays.asList(nums[i], nums[i]+k);
-                Collections.sort(pair2);
-                
-                if(!result.contains(pair2)){   
-                    result.add(pair2);    
-                }
-            }
-        }
-        
-        return result.size();
+        return result;
     }
 }
