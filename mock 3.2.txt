@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+
+        List<List<Integer>> tri1 = new ArrayList<List<Integer>>();
+        
+        //n=0
+        if(numRows==0)
+        {return tri1;}
+        
+        //first row always 1 so will check
+        
+        tri1.add(new ArrayList<>());
+        tri1.get(0).add(1);
+        
+        for(int row1 =1 ; row1 < numRows; row1++){
+            List<Integer> row = new ArrayList<>();
+            List<Integer> prevRow= tri1.get(row1-1);
+            row.add(1);
+            
+            for(int j = 1; j< row1; j++){
+                row.add(prevRow.get(j-1) + prevRow.get(j));
+                        
+            }
+                        //last row
+                        row.add(1);
+                        tri1.add(row);
+                        
+        
+        }
+                        return tri1;
+        
+    }
+}
