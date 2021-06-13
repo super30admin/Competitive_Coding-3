@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Time Complexity : O(n^2)
-// Space Complexity : O(n^2)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
