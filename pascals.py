@@ -1,5 +1,5 @@
 # Time Complexity : O(N^2) 
-# Space Complexity :    O(N^2) 
+# Space Complexity :    O(1) 
 # Did this code successfully run on Leetcode : YES
 # Any problem you faced while coding this : NO
 
