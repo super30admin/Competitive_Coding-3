@@ -35,7 +35,7 @@ public:
     }
 };
 
-//Time Complexity = O(N)
+//Time Complexity = O(NLogN)
 //Space Complexity = O(1)
 //where N is the elements in the vector nums. 
 class Solution {
