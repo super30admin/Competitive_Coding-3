@@ -45,7 +45,7 @@ public:
         sort(nums.begin(),nums.end());
         while(slow<n && fast<n)
         {
-            if(slow==fast || nums[fast]-nums[slow]<k) fast++;
+            if(slow==fast || nums[fast]-nums[slow]<k) fast++;                       //here we are taking slow==fast in if condition because when k=0, then if we dont increment the fast then the counter will increase since nums[slow]=nums[fast] beacause slow=fast and value subtract with itself gives 0. this will create ambiguity in the code.
             else if(nums[fast]-nums[slow]>k) slow++;
             else { count++;
                   slow++;
