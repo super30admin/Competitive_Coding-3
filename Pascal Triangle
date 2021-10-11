@@ -26,7 +26,7 @@ class Solution {
 }
 
 //time :O(n^2)
-//space: O(n) except the result
+//space: O(n) except the result- -taken for previous row
 
 //Approach : array traversal 
 //ran successfully in leetcode ----
