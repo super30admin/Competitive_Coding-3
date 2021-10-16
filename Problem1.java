@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
+//Time Complexity - O(N)
+// Space Complexity - O(N)
+
 public class Problem1 {
 
     public static int findPairs(int[] nums, int k) {

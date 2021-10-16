@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//Time Complexity - O(N^2)
+// Space Complexity - O(1)
+
 public class Problem2 {
 
     public static List<List<Integer>> generate(int numRows) {
