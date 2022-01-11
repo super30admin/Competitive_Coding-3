@@ -1,0 +1,32 @@
+//tc:O(n)
+//sc: O(1)
+//passed on leetcode: yes
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        Arrays.sort(nums);
+        int slow = 0;
+        int fast = 1;
+        int count = 0;
+        while (fast<nums.length) {
+            if (fast == slow ) fast++;
+            else {
+                if (nums[fast]-nums[slow] == k) {
+                    count++;
+                    fast++;
+                }
+                if (fast >= nums.length) return count;
+                while (nums[fast] == nums[fast-1]){
+                    fast++; 
+                    if (fast >= nums.length) return count;
+                    }
+                if (nums[fast]-nums[slow] > k) {
+                    slow++;
+                    }
+                else if(nums[fast]-nums[slow] < k) {
+                    fast++;
+                    }
+                 }
+            }
+           return count;
+    }
+}
