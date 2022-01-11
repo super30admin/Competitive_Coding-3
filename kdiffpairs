@@ -1,4 +1,4 @@
-//tc:O(n)
+//tc:O(nlogn)
 //sc: O(1)
 //passed on leetcode: yes
 class Solution {
