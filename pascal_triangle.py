@@ -1,3 +1,5 @@
+# tc : O(n*n)  
+# sc : O(n*n)
 def generate_pascals_triange(n):
     res = []
     res.append([1])
