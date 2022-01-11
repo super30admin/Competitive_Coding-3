@@ -1,4 +1,4 @@
-# Time Complexity : O(nlogn)
+# Time Complexity : O(n)
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes.
 # Any problem you faced while coding this : NA
@@ -22,3 +22,5 @@ class Solution:
             else:
                 j += 1
         return count 
+
+
