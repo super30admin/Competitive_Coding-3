@@ -15,6 +15,15 @@ import sys
 #  2. INTEGER k
 #
 
+"""
+
+// Time Complexity : O(N
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+"""
+
 def hackerlandRadioTransmitters(x, k):
     # Write your code here
     x.sort()
