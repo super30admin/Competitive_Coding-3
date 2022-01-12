@@ -1,0 +1,38 @@
+// Time Complexity : O(n) 2 pass
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+// this is somewhat similar to two sum problem. in frst pass we store all the values in hashmap (we store the elements
+// in such a way that we have only one copy of each element, if there are moe numbers of same values they will be 
+//overwritten with newwer indices as values)as we want to compare the keys with complement of num of current index and
+// given number k, once we find the complement at ant index we confirm that the index is not current location that we are
+// traversing, because in case k==0, we will get result at each index then
+//we create a list of these 2 elements and stoe it in hasset to avoid duplicacy and return the size of the list.
+ 
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<List<Integer>> set = new HashSet<>();
+        
+        int i=0;
+        while(i<nums.length){
+            map.put(nums[i], i);
+            i++;
+        }      
+        int j=0;
+        while(j<nums.length){
+            if(map.containsKey(nums[j]-k) && map.get(nums[j]-k)!=j){//by this 2nd if condition //we make sure that we are not adding each number in pairs in case the given diffirence is 0
+//if diff is zero then when we check key we will come to the same number that we r at right
+                //now and it will return index whiv is out i, so we check that
+                List<Integer> li = Arrays.asList(nums[j], nums[map.get(nums[j]-k)]);
+                set.add(li);
+            }
+            j++;
+        }
+        return set.size();
+    }
+}
