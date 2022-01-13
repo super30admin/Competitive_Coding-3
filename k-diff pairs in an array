@@ -1,0 +1,19 @@
+# Time Complexity - O(n)
+# Space Complexity - O(n)
+
+class Solution:
+    
+    def findPairs(self, nums: List[int], k: int) -> int:
+        hset = set()
+        result = set()
+        for i in range(len(nums)):
+            if k==0:
+                if nums[i] in hset:
+                    result.add((nums[i],nums[i]))
+            else:
+                if nums[i]+k in hset:
+                    result.add((nums[i],nums[i]+k))
+                if nums[i]-k in hset:
+                    result.add((nums[i]-k,nums[i]))
+            hset.add(nums[i])
+        return len(result)
