@@ -1,5 +1,5 @@
-# // Time Complexity : O(n^2)
-# // Space Complexity : O(1)
+# // Time Complexity : O(n*r^2)
+# // Space Complexity : O(n*r^2)
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : No
 
