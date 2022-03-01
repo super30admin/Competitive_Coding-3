@@ -1,4 +1,4 @@
-// Time Complexity : O(nlog(n)) where n = number of nodes in the tree
+// Time Complexity : O(n2) where n = number of nodes in the tree
 // Space Complexity : O(n) where n = number of nodes in the tree
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
