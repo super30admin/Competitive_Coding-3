@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-// Time Complexity : O(n)
+// Time Complexity : O(nlogn)
 // Space Complexity : O(1)
 class KDiffPairsInArray{
 	public int findPairs(int[] nums, int k) {
