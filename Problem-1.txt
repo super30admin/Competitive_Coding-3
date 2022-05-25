@@ -1,0 +1,43 @@
+//https://leetcode.com/problems/k-diff-pairs-in-an-array/
+//sc-O(n)
+//tc-O(n)
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        
+        if(nums== null || nums.length ==0) return 0;
+        
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int count =0;
+        
+        for(int i =0 ;i<nums.length;i++)
+        {
+            if(!map.containsKey(nums[i]))
+            {
+                map.put(nums[i],1);
+            }
+            else{
+                map.put(nums[i],map.get(nums[i])+1);
+            }
+        }
+        
+        for(Map.Entry<Integer,Integer> m :map.entrySet())
+        {
+            if(k==0)
+            {
+               if(m.getValue() >=2)
+               {
+                   count++;
+               }
+            }
+            if(k>0)
+            {
+               if(map.containsKey(m.getKey()-k) )
+               {
+                   count++;
+               }
+            }
+        }
+       return count; 
+    }
+}
