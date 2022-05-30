@@ -1,20 +1,19 @@
 #Time complexity: O(n)
 #Space complexity: O(n)
-def func(nums,target):
-    res=[]
-    dict1={}
-    i=0
-    while i < len(nums):
-        while i<len(nums) and nums[i] in dict1:
-            i+=1
-        if i==len(nums):
-            break
-        if nums[i]+target in dict1:
-            res.append((nums[i],nums[i]+target))
-        if nums[i]-target in dict1:
-            res.append((nums[i],nums[i]-target))
-        dict1[nums[i]]=1
-        i+=1
-    return res
-nums=[5,1,1,1,3,3,2,4,7,5,5,9,9,7,7,7,7]
-print(func(nums,2))
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        dic = {}
+        st = set()
+        count = 0
+        for i in range(len(nums)):
+            if nums[i] -k in dic and (nums[i],nums[i]-k) not in st and (nums[i]-k,nums[i]) not in st:
+                count += 1
+                st.add((nums[i],nums[i]-k))
+                
+            if nums[i] + k in dic and (nums[i],nums[i]+k) not in st and (nums[i]+k,nums[i]) not in st:
+                count += 1
+                st.add((nums[i],nums[i]+k))
+                
+            dic[nums[i]] = 1
+                
+        return count
