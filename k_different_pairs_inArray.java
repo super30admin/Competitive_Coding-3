@@ -1,4 +1,4 @@
-// Time Complexity : O(n +nlogn) => O(N)asymptotically; where n is the length of nums array
+// Time Complexity : O(n +nlogn) => O(nlogn)asymptotically; where n is the length of nums array
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
