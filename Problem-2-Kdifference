@@ -1,0 +1,29 @@
+//TC - O(n)
+//SC - O(n)
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        HashMap<Integer,Integer> hmap = new HashMap<>();
+        int count = 0;
+        for(int i = 0 ; i < nums.length ; i++)
+        {
+            if(hmap.containsKey(nums[i]))
+            {
+                hmap.put(nums[i] , hmap.get(nums[i]) + 1);
+            }
+            else
+            {
+                hmap.put(nums[i] , 1);
+            }
+            
+        }
+        
+        for(int j : hmap.keySet())
+        {
+            if((k > 0 && hmap.containsKey(j + k)) || ( k == 0 && hmap.get(j) > 1 ))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+}
