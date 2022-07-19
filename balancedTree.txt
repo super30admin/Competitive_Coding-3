@@ -1,0 +1,41 @@
+//Time Complexity : O(n) 
+//Space Complexity : O(h) where h is the height of the tree 
+// Did this code successfully run on Leetcode : Yes
+
+
+
+class Solution
+{
+    boolean b = true;
+    public boolean isBalanced(TreeNode root)
+    {
+        recurr(root);
+        return b;
+    }
+    public int recurr(TreeNode root)
+    {
+        if(root==null)
+        {
+            return -1;
+        }
+        //System.out.println(root.val);
+        int l=-1;
+        int r = -1;
+        if(b!=false)
+        {
+             l = recurr(root.left);
+        }
+        
+        if(b!=false)
+        {
+             r = recurr(root.right);
+        }
+
+            int k = Math.abs(l-r);
+            if(k>=2)
+            {
+                b = false;
+            }
+            return Math.max(l,r)+1;
+    }
+}
