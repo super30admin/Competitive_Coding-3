@@ -1,0 +1,27 @@
+//TimeComplexity O(n*n)
+//Spacecomplexity O(1)
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        
+        result.add(new ArrayList<>());
+        result.get(0).add(1);
+
+        for(int i = 1; i < numRows; i++){
+        List<Integer> prev = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        prev = result.get(i-1);
+        for(int j = 0; j <= i; j++){
+            if(j == 0 || j == i){
+                curr.add(1);
+            }else{
+                int val = prev.get(j-1)+ prev.get(j);
+                curr.add(val);
+            }
+        }
+        result.add(curr);
+        }
+        return result;
+    }
+}
