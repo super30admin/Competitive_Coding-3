@@ -51,8 +51,9 @@
         1. complement 1 ; 1+0 = 1
         - 1 does exist and its idx in idxMap is 3 which == current i (3)
         - cant use 2 numbers from the same idx! skip and move on
-    
+
     time: o(n) + o(n2log2) = o(n)
+    time: o(n) + o(n) = o(n) ( was able to remove sorting 2log2 because we are just sorting a pair of 2 nums )
     space: o(n)
 */
 func findPairs(nums []int, k int) int {
@@ -64,33 +65,27 @@ func findPairs(nums []int, k int) int {
     count := 0
     
     for i := 0; i < len(nums); i++ {
+
         comp1 := nums[i]+k
         idx, comp1Found := idxMap[comp1]
-        if comp1Found {
-            if i != idx {
-                tmp := []int{comp1, nums[i]}
-                sort.Ints(tmp)
-                tmp2 := [2]int{tmp[0], tmp[1]}
-                if !set.containsPair(tmp2) {
-                    count++
-                    set.addPair(tmp2)
-                }
+        if comp1Found && i != idx {
+            tmp := [2]int{comp1, nums[i]}
+            if !set.containsPair(tmp) {
+                count++
+                set.addPair(tmp)
             }
         }
         
         comp2 := nums[i]-k
         idx2, comp2Found := idxMap[comp2]
-        if comp2Found {
-            if i != idx2 {
-                tmp := []int{comp2, nums[i]}
-                sort.Ints(tmp)
-                tmp2 := [2]int{tmp[0], tmp[1]}
-                if !set.containsPair(tmp2) {
-                    count++
-                    set.addPair(tmp2)
-                }
+        if comp2Found && i != idx2 {
+            tmp := [2]int{comp2, nums[i]}
+            if !set.containsPair(tmp) {
+                count++
+                set.addPair(tmp)
             }
         }
+        
     }
     
     return count
@@ -103,9 +98,17 @@ func newSetOfPairs() *setOfPairs{
     return &setOfPairs{items: map[[2]int]struct{}{}}
 }
 func (s *setOfPairs) addPair(n [2]int) {
+    // sort it first
+    if n[1] < n[0] {
+        n[0], n[1] = n[1],n[0]
+    }
     s.items[n] = struct{}{}
 }
 func (s *setOfPairs) containsPair(n [2]int)  bool {
+    // sort it first
+    if n[1] < n[0] {
+        n[0], n[1] = n[1],n[0]
+    }
     _, ok := s.items[n]
     return ok
 }
