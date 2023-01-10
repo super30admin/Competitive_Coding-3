@@ -1,0 +1,36 @@
+// Time Complexity : o(nm) n is num of rows , m is no of elements in each row
+// Space Complexity : o(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+* This could be solved using a 2-d array. dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
+* Since the solution depends only on the previous row we can solve using 1-d array with same logic dp[j] = dp[j-1] + dp[j];
+* Traverse the 1-d array from the end to prevent overwriting of intermediate results
+* Have edge cases for first and last col
+*
+* */
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>>  result = new ArrayList<>();
+        int dp[] = new int[numRows];
+        for(int i = 0; i <numRows; i++){
+            List<Integer> curr = new ArrayList<>();
+            for(int j = i; j>=0; j--){
+                if(j==0 || j==i){
+                    dp[j] = 1;
+
+                } else{
+                    dp[j] = dp[j-1] + dp[j];
+                }
+                curr.add(dp[j]);
+            }
+
+            result.add(new ArrayList<>(curr));
+        }
+        return result;
+    }
+}
