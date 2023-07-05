@@ -1,3 +1,10 @@
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach: The code utilizes the frequency hash map to efficiently find pairs with the desired difference k. By counting the occurrences of each number and then checking for the existence of specific numbers in the map, it avoids the need for nested loops or sorting the array.
+
 import java.util.HashMap;
 import java.util.Map;
 

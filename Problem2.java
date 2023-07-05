@@ -1,3 +1,10 @@
+// Time Complexity : O(n^2) where n = numRows
+// Space Complexity : O(n^2) where n = numRows
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach: The code generates Pascal's triangle up to the specified number of rows by iteratively calculating each row based on the previous row's values, resulting in a triangular structure. The triangle is stored in a list of lists, which is then returned.
+
 import java.util.ArrayList;
 import java.util.List;
 
