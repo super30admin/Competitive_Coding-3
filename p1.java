@@ -1,4 +1,5 @@
-// Time Complexity : O(n)
+// Time Complexity : O(n^2)
+//Pascal's triangle
 // Space Complexity : O(1) as no extra space is used
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :Had to lookup list.get function
