@@ -5,7 +5,7 @@
 
 import java.util.HashSet;
 
-class Solution {
+class KDiffPairs {
     public int findPairs(int[] nums, int k) {
 
         HashSet<Integer> uniqueNums = new HashSet<>();
