@@ -1,0 +1,17 @@
+#time complexity: O(n^2)
+#space complexity: O(n^2)
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        #base case if numRows is 1
+        if numRows==0:
+            return []
+        #create pascal triangle with 2 rows
+        pascal = [[1]]
+        for i in range(1,numRows):
+            prev_row = pascal[-1]
+            new_row = [1]
+            for j in range(1,len(prev_row)):
+                new_row.append(prev_row[j-1]+prev_row[j])
+            new_row.append(1)
+            pascal.append(new_row)
+        return pascal
