@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+//TC will be O(N)
+//SC will be O(N)
 class KDiffPairs {
     public int findPairs(int[] nums, int k) {
 
