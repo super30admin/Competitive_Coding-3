@@ -1,5 +1,5 @@
-// Time Complexity  : O(nlogn)
-// Space Complexity : O(1)
+// Time Complexity  : O(n)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this : No
 
@@ -16,12 +16,9 @@
  * if l is equal to r then increment right ptr
  */
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 class KDiffPairArray {
     public int findPairs(int[] nums, int k) {
@@ -39,33 +36,33 @@ class KDiffPairArray {
     }
 
     // private int helperHashSet(int[] nums, int k, int n) {
-    //     Set<Integer> set = new HashSet<>();
-    //     Arrays.sort(nums);
+    // Set<Integer> set = new HashSet<>();
+    // Arrays.sort(nums);
 
-    //     for (int i = 0; i < n - 1; i++) {
-    //         if (Arrays.binarySearch(nums, i + 1, n, nums[i] + k) > 0) {
-    //             set.add(nums[i]);
-    //         }
-    //     }
+    // for (int i = 0; i < n - 1; i++) {
+    // if (Arrays.binarySearch(nums, i + 1, n, nums[i] + k) > 0) {
+    // set.add(nums[i]);
+    // }
+    // }
 
-    //     return set.size();
+    // return set.size();
     // }
 
     // private int helperBruteForce(int[] nums, int k, int n) {
-    //     Set<List<Integer>> result = new HashSet<>();
+    // Set<List<Integer>> result = new HashSet<>();
 
-    //     for (int i = 0; i < n; i++) {
-    //         for (int j = i + 1; j < n; j++) {
-    //             if (Math.abs(nums[i] - nums[j]) == k) {
-    //                 List<Integer> list = new ArrayList<>();
-    //                 list.add(nums[i]);
-    //                 list.add(nums[j]);
-    //                 Collections.sort(list);
-    //                 result.add(list);
-    //             }
-    //         }
-    //     }
-    //     return result.size();
+    // for (int i = 0; i < n; i++) {
+    // for (int j = i + 1; j < n; j++) {
+    // if (Math.abs(nums[i] - nums[j]) == k) {
+    // List<Integer> list = new ArrayList<>();
+    // list.add(nums[i]);
+    // list.add(nums[j]);
+    // Collections.sort(list);
+    // result.add(list);
+    // }
+    // }
+    // }
+    // return result.size();
     // }
 
     // Time Complexity: Max(O(nlogn), O(n))
@@ -95,6 +92,22 @@ class KDiffPairArray {
             }
         }
 
+        return cnt;
+    }
+
+    private int helperHashMap(int[] nums, int k, int n) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+
+        int cnt = 0;
+        for (int i : map.keySet()) {
+            int complement = i + k;
+            if (k > 0 && map.containsKey(complement) || k == 0 && (map.get(i) > 1)) {
+                cnt++;
+            }
+        }
         return cnt;
     }
 }
