@@ -1,0 +1,41 @@
+// Time complexity = O(nlog(n)) // sorting .
+// Space complexity= O(1) 
+// we can also do this using hashmap (hashing, it is better on time complexity O(n) but space complexity is O(n))
+public class KDiffPairs {
+    public int findPairs(int[] nums, int target) {
+
+        Arrays.sort(nums);
+
+        int left = 0, right = left+1;
+        int result = 0;
+
+        while (left < nums.length && right < nums.length) {
+            // get the sum. (absolute sum) for |nums[i] - nums[j]|
+            int sum = Math.abs(nums[right] - nums[left]);
+            // for the eg -  [1,1,2,2].
+            //when left == right, increment the right by 1.
+            // for sum< target follow eg - [1,1,3,4,5].
+            if (left == right ||  sum < target) {
+                right++;   
+            // for sum> target follow eg - [1,1,3,4,5].
+            } else if (sum > target) {
+                left++;       
+            } else {
+                // increment both. diwali time.
+                left++;
+                right++;
+                result++;
+                // check for the condition of duplicates,
+                // base condition is again checked.
+                while (left < nums.length && nums[left] == nums[left - 1]) {
+                    left++;
+                }
+                while (right < nums.length && nums[right] == nums[right - 1]) {
+                    right++;
+                }                    
+            }
+            
+        }
+        return result;
+    }
+}
