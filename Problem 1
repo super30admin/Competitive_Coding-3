@@ -1,0 +1,33 @@
+// Time Complexity :O(numRows^2)
+// Space Complexity : O(numRows^2)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) 
+    {
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i=0;i<numRows;i++)
+        {
+            List<Integer> m = new ArrayList<>();
+            for(int j=0;j<=i;j++)
+            {
+                if(j==0 || j==i)
+                {
+                    m.add(1);
+                }
+                else
+                {
+                    int left = result.get(i-1).get(j-1);
+                    int right = result.get(i-1).get(j);
+                    m.add(left+right);
+                }
+            }
+            result.add(m);
+        }
+        return result;
+    }
+}

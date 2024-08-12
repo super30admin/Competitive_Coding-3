@@ -1,0 +1,44 @@
+// Time Complexity :O(n)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public int findPairs(int[] nums, int k)
+    {
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for (int i = 0; i < nums.length; i++)
+        {
+            if (map.containsKey(nums[i]))
+            {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            }
+            else
+            {
+                map.put(nums[i], 1);
+            }
+        }
+        for (int i = 0; i < nums.length; i++)
+        {
+            int m = nums[i] - k;
+            if (k == 0)
+            {
+                if (map.get(nums[i]) > 1)
+                {
+                    count++;
+                    map.put(nums[i], 0);
+                }
+            }
+            else if (map.containsKey(m) && map.get(m) > 0)
+            {
+                count++;
+                map.put(m, 0);
+            }
+        }
+        return count;
+    }
+}
