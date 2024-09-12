@@ -1,0 +1,34 @@
+// Time Complexity : o(nlogn)
+// Space Complexity : o(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+* Sort the array.
+* If nums[i] + k is present in the array then it forms a solution.
+* Use Hashmap to check nums[i] + k is present in array
+* To prevent duplicates , skip processesing elements which are same
+* */
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        Arrays.sort(nums);
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i< nums.length; i++){
+            map.put(nums[i], i);
+        }
+        for(int i = 0; i< nums.length; i++){
+            while(i>0 && i< nums.length && nums[i] == nums[i-1]){
+                i++;
+            }
+            if(i< nums.length && map.containsKey(nums[i] + k ) && map.get(nums[i] + k)!=i){
+                res++;
+            }
+
+        }
+        return res;
+    }
+}
