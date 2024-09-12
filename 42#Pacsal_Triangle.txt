@@ -1,0 +1,35 @@
+// Time Complexity :O(n^2)  n - is number of rows
+// Space Complexity :O(n^2)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+       List<List<Integer>> result = new ArrayList<>();  // list to store result
+	  
+	  // edge case
+	  if( numRows == 0)
+		return result;
+	  
+	  result.add(new ArrayList());
+	  result.get(0).add(1) ;   // adding first row
+	  
+	  for(int i = 1; i< numRows ; i++) // for remaining rows
+	  {
+	    List<Integer> temp = new ArrayList<>(); // to store result of current row
+		List<Integer> prev = result.get(i-1); // get the previous row
+		
+		temp.add(1);  // add the first element as 1
+		
+		for(int j = 1 ; j < i ; j++){
+		   temp.add( prev.get(j)+prev.get(j-1));  // all middle elements are sum of prev row 2 element
+		}
+		
+		temp.add(1); // add last element as 1
+		
+		result.add(temp); // add row to result
+	  }
+	  
+	  return result; // return result
+    }
+}
