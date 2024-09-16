@@ -1,0 +1,33 @@
+// Time Complexity : O(nlogn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if(nums == null || nums.length == 0)    return 0;
+        
+        Arrays.sort(nums);
+        
+        int countPairs = 0;
+        int ptr1 = 0, ptr2 = 1;
+        
+        while(ptr1 < nums.length && ptr2 < nums.length){
+            
+            if(ptr1 == ptr2 || nums[ptr2] - nums[ptr1] < k){
+                ptr2++;
+            }else if(nums[ptr2] - nums[ptr1] > k){
+                ptr1++;
+            }else{
+                ptr1++;
+                countPairs++;
+                while( ptr1 < nums.length && nums[ptr1] == nums[ptr1 - 1]){
+                    ptr1++;
+                }              
+            }
+        }
+        
+        return countPairs;
+    }
+}
