@@ -1,0 +1,33 @@
+//Time Complexity : O(n) 
+//Space Complexity : O(n) 
+// Did this code successfully run on Leetcode : Yes
+
+
+class Solution {
+    ListNode f;
+    boolean ans = true;
+    public boolean isPalindrome(ListNode head) 
+    {
+        f = head;
+        helperFunc(head);
+        return ans;
+            
+    }
+    
+    public void helperFunc(ListNode head)
+    {
+        if(head == null )
+        {
+            return;
+        }
+        
+        helperFunc(head.next);
+        
+        if(head.val != f.val)
+        {
+            ans = false;
+        }
+        
+        f = f.next;
+    }
+}
