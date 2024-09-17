@@ -1,0 +1,31 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+    
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int count=0;
+        for(int num : nums){
+            map.put(num, map.getOrDefault(num,0)+1); //counting num of digits and adding it in map the counting of it
+        }
+        
+        for(int num:map.keySet()) //iterate through unique keyset in hashmap
+        {
+            if(map.containsKey(num+k) && k>0){  //addding target and checking it it exists and >0 
+                if(map.get(num+k)>0){
+                    count++;
+                }
+            }
+            if(k==0 && map.containsKey(num)){
+                if(map.get(num)>=2){  //if any num of repeating elements will be there still it will be unique & if diff is 0 same num is called no need to add 0 , we can dd but ans remains same. 
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+//time: O(n) foe 2 for iterations 2n and that comes to O(n)
+//space: O(n) for map
+//ran successfully on leetcode
+//didnt tried with the approach which the soln is shared.Will try that as well later.
+//Approach : Hashmap storing all num as key and counter as value count and than 
