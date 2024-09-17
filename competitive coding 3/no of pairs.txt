@@ -1,0 +1,35 @@
+// time complexity = O(n)
+// space complexity = O(1)
+class Solution {
+    public int findPairs(int[] a, int k) {
+        Arrays.sort(a);
+        if(a.length<2) return 0;
+        int target=k;
+        int l=0;
+        int h=1;
+        int count=0;
+        while(h<a.length && l<h)
+        {
+            if(a[h]-a[l]==target)
+            {
+                count++;l++;h++;
+                if(l<a.length)
+                while(l<a.length && a[l]==a[l-1] ) l++;
+                if(h<a.length)
+                while(h<a.length && a[h]==a[h-1]) h++;
+                if(l==h) h++;
+                
+            }
+            else if(a[h]-a[l]>target)
+            {
+                   l++;
+                if(l==h) h++;
+            }
+            else
+            {
+                h++;
+            }
+        }
+       return count;
+    }
+}
