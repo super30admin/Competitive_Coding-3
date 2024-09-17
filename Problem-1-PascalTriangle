@@ -1,0 +1,25 @@
+//Tc - O(n^2)
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
+        ArrayList<Integer> previous = new ArrayList<>();
+        for(int i = 1 ; i <= numRows ; i++)
+        {
+            ArrayList<Integer> row = new ArrayList<>();
+            for(int j = 1 ; j <= i ; j++)
+            {
+                if( j == 1 || j == i)
+                {
+                    row.add(1);
+                }
+                else
+                {
+                    row.add(previous.get(j-2) + previous.get(j-1));
+                }
+            }
+            previous = row;
+            result.add(row);
+        }
+        return result;
+    }
+}
