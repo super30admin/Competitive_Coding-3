@@ -1,0 +1,16 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        p = []
+        for i in range(numRows):
+            temp = []
+            for j in range(i+1):
+                if j == 0 or j == i:
+                    temp.append(1)
+                else:
+                    temp.append(p[i-1][j]+p[i-1][j-1]) 
+            p.append(temp)
+        return p
+    
+# Time Complexity: O(n^2)
+# Space Complexity: O(n^2)
+# Sucessfully implemented on Leetcode
