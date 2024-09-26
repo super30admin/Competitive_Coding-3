@@ -1,0 +1,19 @@
+//T: O(N)
+//S: O(N)
+
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        int cnt = 0;
+        unordered_map<int, int> store;
+        for(auto i: nums) store[i]++;
+        for(auto i: store){
+            if(store.find(i.first+k)!=store.end() && k>0){
+                cnt++;
+            }else if(k == 0 && store[i.first+k]>1) cnt++;
+        }
+        
+        
+        return cnt;
+    }
+};
