@@ -1,0 +1,24 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int finalPair = 0;
+        // Count frequency of each number in nums
+        for (int i=0;i<nums.length;i++) {
+            if(map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            } else {
+                map.put(nums[i], 1);
+            }
+            
+        }
+
+        for(int i : map.keySet()) {
+            int diff = i - k;
+            if((k == 0 && map.get(i) > 1) || (k > 0 && map.containsKey(diff))) {
+                finalPair++;
+            }
+        }
+
+        return finalPair;
+    }
+}
