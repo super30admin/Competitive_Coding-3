@@ -1,0 +1,21 @@
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        if k < 0:
+            return 0  # Absolute difference cannot be negative
+
+        count = 0
+        num_counts = Counter(nums)
+
+        if k == 0:
+            # Count numbers that appear more than once
+            for num in num_counts:
+                if num_counts[num] > 1:
+                    count += 1
+        else:
+            # For k > 0, check if num + k exists for each unique num
+            for num in num_counts:
+                if num + k in num_counts:
+                    count += 1
+
+        return count
+
