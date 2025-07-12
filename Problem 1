@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        //we need numRows as rows and each row will have the row number of columns
+        for(int i=0; i<=numRows - 1; i++){
+            List<Integer> rows = new ArrayList<>();
+            //for each row, we need list which contains row number of elements
+            for(int j = 0;j<=i; j++){
+                //both ends of the triangle row will be 1
+                if(j == 0 || j == i){
+                    rows.add(1);
+                }
+                //elements in middle will be sum of (same and before column) in previous row
+                else{
+                    List<Integer> prev = result.get(i-1);
+                    rows.add(prev.get(j) + prev.get(j-1));
+                }
+            }
+            //adding that row to list
+            result.add(rows);
+        }
+        return result;
+    }
+}

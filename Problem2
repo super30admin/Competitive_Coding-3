@@ -1,0 +1,28 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        //storing numbers and their frequency in hashmap
+        for(int i = 0; i< nums.length; i++){
+            hm.put(nums[i], hm.getOrDefault(nums[i], 0)+1);
+        }
+        int count = 0;
+        for(int n : hm.keySet()){
+            //when difference is 0, we need same number more that once
+            if(k == 0){
+                if(hm.get(n) >= 2){
+                    count++;
+                }
+            }
+            //or if we have the diffrenece between number and k in hashmap, we got a set
+            else{
+                if(hm.containsKey(n-k)){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
