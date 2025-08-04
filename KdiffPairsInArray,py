@@ -1,0 +1,39 @@
+# Time Complexity = O(n)
+# Space Complexity = O(n)
+
+class Solution:
+    def findPairs(self, nums: list[int], k: int) -> int:
+        myDict = {}
+        count = 0
+        
+        if k != 0:
+
+            # initiating the dictionary with frequency of each element
+            for i in nums:
+                if i not in myDict:
+                    myDict[i] = 1
+                else:
+                    myDict[i] += 1
+            
+            # iterating through dict and taking sum of key and target
+            for key,value in myDict.items():
+                diff = key + k
+                if diff in myDict:
+                    count += 1
+            
+            return count
+        
+        elif k == 0:
+            
+            for i in nums:
+                if i not in myDict:
+                    myDict[i]  = 1
+                else:
+                    myDict[i] += 1
+
+            # if there are any elements repeated more than once, that is counted as one pair since their difference will lead to 0    
+            for key,value in myDict.items():
+                if value > 1:
+                    count += 1
+            
+            return count
