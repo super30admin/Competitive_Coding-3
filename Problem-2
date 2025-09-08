@@ -1,0 +1,35 @@
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+// Store frequency of elements in a hash map
+// if k = 0 check if a number exists more than once then count it as a pair
+// otherwise check for every key in the map if key + k exists in the map, then count as a pair
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if(nums.length == 1)
+            return 0;
+        Map<Integer, Integer> freq = new HashMap<>();
+        int count = 0;
+        for(int num : nums) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+        for(int key : freq.keySet()) {
+            // check if duplicates are there which can be made a pair for k = 0
+            if(k == 0) {
+                if(freq.get(key) > 1)
+                    count++;
+            }
+            // check if key + k is there in the map
+            else {
+                if(freq.containsKey(key+k))
+                    count++;
+            }
+        }
+        return count;
+    }
+}
