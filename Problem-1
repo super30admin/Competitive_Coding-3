@@ -1,0 +1,29 @@
+// Time Complexity : O(n^2), n-> number of rows
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+// create each row with the first and last element as 1
+// for every other element in the row value = sum of previous row's current column and previous column elements
+// After populating the row add it to the resultant list
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<>();
+        for(int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>(); // current row list
+            for(int j = 0; j < i+1; j++) {
+                if(j == 0 || j == i) //if it is first or last element
+                    row.add(1);
+                else {
+                    int num = list.get(i-1).get(j) + list.get(i-1).get(j-1);
+                    row.add(num);
+                }
+            }
+            list.add(row); //add row to resultant list
+        }
+        return list;
+    }
+}
