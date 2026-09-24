@@ -1,0 +1,35 @@
+class Solution {
+    /**
+     * Approach: Use map to store number and its frequencey. 
+        In the second pass check if k == 0 and if number frequency is >=2 then add 1 to result;
+        else check if map contains num-k.
+    
+        Time: O(N)
+        space: O(N)
+     *
+     */
+    public int findPairs(int[] nums, int k) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+
+        //Number and how many times it has occured
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        for (int num : map.keySet()) {
+            int freq = map.get(num);
+            if (k == 0) {
+                if (freq >= 2)
+                    count++;
+
+            } else {
+                if (map.containsKey(num - k))
+                    count++;
+
+            }
+        }
+        return count;
+
+    }
+}

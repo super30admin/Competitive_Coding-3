@@ -1,0 +1,28 @@
+class Solution {
+    /**
+    Approach: First row just has 1.
+    Remining all rows  has first and last element as a one and middle elements are nothing but addition of j-1 and jth element from previous row.
+
+    Time: O(n2)
+    Space: O(1)
+     */
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        //First row
+        result.add(Arrays.asList(1));
+        for(int i = 1; i<numRows; i++){
+            List<Integer> prevRow = result.get(i-1);
+            List<Integer> currRow = new ArrayList();
+            currRow.add(1);
+            for(int j=1; j< prevRow.size(); j++){
+                currRow.add(prevRow.get(j-1)+prevRow.get(j));
+            }
+            currRow.add(1);
+            result.add(currRow);
+
+        }
+        return result;
+
+        
+    }
+}
